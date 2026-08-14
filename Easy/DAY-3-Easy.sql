@@ -41,3 +41,45 @@ FROM
     FROM
         student_master) AS student_age
 GROUP BY gender;
+
+-- -----------------------------------------------------------------------------------
+-- 13. Write a query to get the date of birth of the youngest student for each gender.
+-- -----------------------------------------------------------------------------------
+
+SELECT 
+    gender, MAX(date_of_birth) AS date_of_birth
+FROM
+    student_master
+GROUP BY gender;
+
+-- ---------------------------------------------------------------------
+-- 14. Write a query to find the latest enrollment date for each gender.
+-- ---------------------------------------------------------------------
+
+SELECT 
+    gender, MAX(enrollment_date) AS enrollment_date
+FROM
+    student_master
+GROUP BY gender;
+
+-- ---------------------------------------------------------------------------------------------------
+-- 15. Write a query to show only those gender groups where the number of students is greater than 10.
+-- ---------------------------------------------------------------------------------------------------
+
+SELECT 
+    gender
+FROM
+    (SELECT 
+        gender, COUNT(gender) AS gender_count
+    FROM
+        student_master
+    GROUP BY gender) AS student_gender
+WHERE
+    gender_count > 10;
+
+SELECT 
+    gender, COUNT(gender) AS gender_count
+FROM
+    student_master
+GROUP BY gender
+HAVING COUNT(gender) > 10;
