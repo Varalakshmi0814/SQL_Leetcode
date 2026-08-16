@@ -56,3 +56,27 @@ FROM
 WHERE
     gender = 'M' AND is_active IS TRUE
 GROUP BY YEAR(enrollment_date);
+
+-- --------------------------------------------------------------------------------------------
+-- 19. Write a query to retrieve the details of the first 5 students who enrolled in 2024.
+-- --------------------------------------------------------------------------------------------
+
+SELECT 
+    *
+FROM
+    student_master
+WHERE
+    YEAR(enrollment_date) = 2022
+ORDER BY student_id
+LIMIT 5;
+
+-- -------------------------------------------------------------------------------------------------------------------
+-- 20. Write a query to count students in each gender group and sort the results in descending order of student count.
+-- -------------------------------------------------------------------------------------------------------------------
+
+SELECT 
+    gender, COUNT(student_id) AS student_count
+FROM
+    student_master
+GROUP BY gender
+ORDER BY 2 DESC;
