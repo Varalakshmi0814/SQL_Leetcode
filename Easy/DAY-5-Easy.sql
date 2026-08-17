@@ -33,3 +33,14 @@ FROM
     student_master
 WHERE
     LOWER(first_name) LIKE LOWER('John');
+    
+-- -------------------------------------------------------------------------------
+-- 24. Write a query to list students whose first name has more than 6 characters.
+-- -------------------------------------------------------------------------------
+
+SELECT 
+    CONCAT(first_name, ' ', last_name) AS Student_name
+FROM
+    student_master
+WHERE
+    LENGTH(first_name) > 6;
