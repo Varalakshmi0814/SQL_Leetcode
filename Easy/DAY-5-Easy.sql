@@ -44,3 +44,12 @@ FROM
     student_master
 WHERE
     LENGTH(first_name) > 6;
+    
+-- ------------------------------------------------------------------------------
+-- 25. Write a query to count the number of unique enrollment years in the table.
+-- ------------------------------------------------------------------------------
+
+SELECT 
+    COUNT(DISTINCT (YEAR(enrollment_date))) AS unique_enrollment_years
+FROM
+    student_master;
