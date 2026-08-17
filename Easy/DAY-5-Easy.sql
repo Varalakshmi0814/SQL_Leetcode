@@ -22,3 +22,14 @@ FROM
     student_master
 GROUP BY YEAR(enrollment_date) , MONTH(enrollment_date)
 ORDER BY 1;
+
+-- ---------------------------------------------------------------------------------------------
+-- 23. Write a query to retrieve students whose first name is 'John', ignoring case sensitivity.
+-- ---------------------------------------------------------------------------------------------
+
+SELECT 
+    CONCAT(first_name, ' ', last_name) AS Student_name
+FROM
+    student_master
+WHERE
+    LOWER(first_name) LIKE LOWER('John');
