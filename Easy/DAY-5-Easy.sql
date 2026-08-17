@@ -1,0 +1,55 @@
+-- -----------------------------------------------------------------------------------------------------------------
+-- 21. Write a query to get students whose date of birth is either before January 1, 2000, or after January 1, 2010.
+-- -----------------------------------------------------------------------------------------------------------------
+
+SELECT 
+    first_name, last_name
+FROM
+    student_master
+WHERE
+    date_of_birth < '2000-01-01'
+        OR date_of_birth > '2010-01-01';
+        
+-- -----------------------------------------------------------------------------------------------
+-- 22. Write a query to count how many students enrolled in each month, grouped by year and month.
+-- -----------------------------------------------------------------------------------------------
+
+SELECT 
+    YEAR(enrollment_date) AS enrollment_year,
+    MONTH(enrollment_date) AS enrollment_month,
+    COUNT(student_id) AS student_count
+FROM
+    student_master
+GROUP BY YEAR(enrollment_date) , MONTH(enrollment_date)
+ORDER BY 1;
+
+-- ---------------------------------------------------------------------------------------------
+-- 23. Write a query to retrieve students whose first name is 'John', ignoring case sensitivity.
+-- ---------------------------------------------------------------------------------------------
+
+SELECT 
+    CONCAT(first_name, ' ', last_name) AS Student_name
+FROM
+    student_master
+WHERE
+    LOWER(first_name) LIKE LOWER('John');
+    
+-- -------------------------------------------------------------------------------
+-- 24. Write a query to list students whose first name has more than 6 characters.
+-- -------------------------------------------------------------------------------
+
+SELECT 
+    CONCAT(first_name, ' ', last_name) AS Student_name
+FROM
+    student_master
+WHERE
+    LENGTH(first_name) > 6;
+    
+-- ------------------------------------------------------------------------------
+-- 25. Write a query to count the number of unique enrollment years in the table.
+-- ------------------------------------------------------------------------------
+
+SELECT 
+    COUNT(DISTINCT (YEAR(enrollment_date))) AS unique_enrollment_years
+FROM
+    student_master;
