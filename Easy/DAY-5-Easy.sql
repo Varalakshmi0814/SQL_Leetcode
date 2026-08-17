@@ -9,3 +9,16 @@ FROM
 WHERE
     date_of_birth < '2000-01-01'
         OR date_of_birth > '2010-01-01';
+        
+-- -----------------------------------------------------------------------------------------------
+-- 22. Write a query to count how many students enrolled in each month, grouped by year and month.
+-- -----------------------------------------------------------------------------------------------
+
+SELECT 
+    YEAR(enrollment_date) AS enrollment_year,
+    MONTH(enrollment_date) AS enrollment_month,
+    COUNT(student_id) AS student_count
+FROM
+    student_master
+GROUP BY YEAR(enrollment_date) , MONTH(enrollment_date)
+ORDER BY 1;
