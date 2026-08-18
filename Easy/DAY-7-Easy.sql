@@ -31,3 +31,21 @@ FROM
     student_master
 WHERE
     last_name LIKE '%son%';
+
+-- ----------------------------------------------------------------------
+-- 34. Write a query to count how many students were born in each decade.
+-- ----------------------------------------------------------------------
+
+SELECT 
+    COUNT(CASE
+        WHEN YEAR(date_of_birth) BETWEEN 2000 AND 2010 THEN 'YES'
+    END) AS decade
+FROM
+    student_master;
+    
+SELECT
+    FLOOR(YEAR(date_of_birth) / 10) * 10 AS birth_decade,
+    COUNT(*) AS student_count
+FROM student_master
+GROUP BY FLOOR(YEAR(date_of_birth) / 10) * 10
+ORDER BY birth_decade;
