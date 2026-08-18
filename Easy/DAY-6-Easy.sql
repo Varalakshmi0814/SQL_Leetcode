@@ -54,3 +54,59 @@ FROM
     student_master
 WHERE
     contact_number LIKE '123%';
+    
+-- ------------------------------------------------------------------------------------------------------------------
+-- 30. Write a query to count the number of students classified as either "Adult" (18 or older) or "Minor" (under 18).
+-- ------------------------------------------------------------------------------------------------------------------
+
+with student_age_group as ( 
+with students as (
+SELECT 
+    *,
+    TIMESTAMPDIFF(YEAR,
+        date_of_birth,
+        CURDATE()) AS age
+FROM
+    student_master
+) 
+SELECT 
+    *,
+    CASE
+        WHEN age < 18 THEN 'Minor'
+        WHEN age >= 18 THEN 'Adult'
+    END AS age_group
+FROM
+    students
+) 
+select 
+	age, age_group, count(1) over(partition by age_group) as age_group_count  
+from 
+	student_age_group;
+    
+-- ------------------------------------------------------------------------------------------------------------------
+
+with student_age_group as ( 
+with students as (
+SELECT 
+    *,
+    TIMESTAMPDIFF(YEAR,
+        date_of_birth,
+        enrollment_date) AS age
+FROM
+    student_master
+) 
+SELECT 
+    *,
+    CASE
+        WHEN age < 18 THEN 'Minor'
+        WHEN age >= 18 THEN 'Adult'
+    END AS age_group
+FROM
+    students
+) SELECT 
+    age_group, COUNT(1)
+FROM
+    student_age_group
+GROUP BY age_group
+;
+
