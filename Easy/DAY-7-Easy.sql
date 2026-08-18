@@ -20,3 +20,14 @@ FROM
 WHERE
     YEAR(enrollment_date) < '2020-01-01'
         OR is_active IS FALSE;
+
+-- -------------------------------------------------------------------------------
+-- 33. Write a query to get students whose last name contains the substring "son".
+-- -------------------------------------------------------------------------------
+
+SELECT 
+    CONCAT(first_name, ' ', last_name) AS Student_Name
+FROM
+    student_master
+WHERE
+    last_name LIKE '%son%';
