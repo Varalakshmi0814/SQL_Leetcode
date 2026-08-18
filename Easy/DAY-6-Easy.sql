@@ -29,3 +29,17 @@ FROM
         student_master) student_avg_age
 GROUP BY gender
 HAVING AVG(age) > 25;
+
+-- --------------------------------------------------------------------------------------------------------------
+-- 28. Write a query to count active students by gender, but only show results where the count is greater than 2.
+-- --------------------------------------------------------------------------------------------------------------
+
+SELECT 
+    gender, COUNT(1) AS active_students
+FROM
+    student_master
+WHERE
+    is_active IS TRUE
+GROUP BY gender
+HAVING COUNT(1) > 2;
+
