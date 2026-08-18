@@ -49,3 +49,13 @@ SELECT
 FROM student_master
 GROUP BY FLOOR(YEAR(date_of_birth) / 10) * 10
 ORDER BY birth_decade;
+
+-- ----------------------------------------------------------------------------------------------------------
+-- 35. Write a query to retrieve the student ID and full name (first and last name combined) of all students.
+-- ----------------------------------------------------------------------------------------------------------
+
+SELECT 
+    student_id,
+    CONCAT(first_name, ' ', last_name) AS Student_Full_Name
+FROM
+    student_master;
