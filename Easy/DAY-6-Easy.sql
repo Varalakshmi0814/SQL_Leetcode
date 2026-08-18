@@ -43,3 +43,14 @@ WHERE
 GROUP BY gender
 HAVING COUNT(1) > 2;
 
+-- -----------------------------------------------------------------------------------------
+-- 29. Write a query to retrieve students whose contact number starts with the digits "123".
+-- -----------------------------------------------------------------------------------------
+
+SELECT 
+    CONCAT(first_name, ' ', last_name) AS student_name,
+    contact_number
+FROM
+    student_master
+WHERE
+    contact_number LIKE '123%';
