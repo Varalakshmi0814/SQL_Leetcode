@@ -26,3 +26,15 @@ FROM
     student_master
 WHERE
     LENGTH(contact_number) = 10;
+    
+-- -----------------------------------------------------------------------------------------------------
+-- 43. Write a query to calculate the total number of students grouped by both gender and active status.
+-- -----------------------------------------------------------------------------------------------------
+
+SELECT 
+    gender, COUNT(1) AS student_total
+FROM
+    student_master
+WHERE
+    is_active IS TRUE
+GROUP BY gender , is_active;
