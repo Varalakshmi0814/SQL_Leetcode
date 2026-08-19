@@ -10,3 +10,17 @@ SELECT
         CURDATE()) AS current_age
 FROM
     student_master;
+    
+-- ------------------------------------------------------------------
+-- 37. Write a query to find the student with the longest first name.
+-- ------------------------------------------------------------------
+
+SELECT 
+    first_name, last_name
+FROM
+    student_master
+WHERE
+    LENGTH(first_name) = (SELECT 
+            MAX(LENGTH(first_name))
+        FROM
+            student_master);
