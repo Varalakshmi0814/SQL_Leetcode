@@ -35,3 +35,14 @@ FROM
     student_master
 GROUP BY first_name
 HAVING COUNT(student_id) > 1;
+
+-- ------------------------------------------------------------------------------------
+-- 39. Write a query to count how many students have a NULL value in the address field.
+-- ------------------------------------------------------------------------------------
+
+SELECT 
+    COUNT(1) AS address_null
+FROM
+    student_master
+WHERE
+    address = NULL;
