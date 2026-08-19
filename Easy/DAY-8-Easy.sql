@@ -24,3 +24,14 @@ WHERE
             MAX(LENGTH(first_name))
         FROM
             student_master);
+
+-- ----------------------------------------------------------------
+-- 38. Write a query to list students who have the same first name.
+-- ----------------------------------------------------------------
+
+SELECT 
+    first_name, COUNT(student_id)
+FROM
+    student_master
+GROUP BY first_name
+HAVING COUNT(student_id) > 1;
