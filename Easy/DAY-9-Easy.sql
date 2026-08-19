@@ -50,3 +50,12 @@ FROM
 WHERE
     first_name = REVERSE(first_name)
         OR last_name = REVERSE(last_name);
+        
+-- ----------------------------------------------------------------------------------
+-- 45. Write a query to show the first three characters of each student's first name.
+-- ----------------------------------------------------------------------------------
+
+SELECT 
+    first_name, SUBSTR(first_name, 1, 3) AS first_three_chars
+FROM
+    student_master;
