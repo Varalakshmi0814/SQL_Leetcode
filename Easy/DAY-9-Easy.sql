@@ -38,3 +38,15 @@ FROM
 WHERE
     is_active IS TRUE
 GROUP BY gender , is_active;
+
+-- ------------------------------------------------------------------------------
+-- 44. Write a query to find students whose names are palindromes (e.g., "Anna").
+-- ------------------------------------------------------------------------------
+
+SELECT 
+    CONCAT(first_name, ' ', last_name) AS full_name
+FROM
+    student_master
+WHERE
+    first_name = REVERSE(first_name)
+        OR last_name = REVERSE(last_name);
