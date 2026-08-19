@@ -46,3 +46,17 @@ FROM
     student_master
 WHERE
     address = NULL;
+    
+-- ----------------------------------------------------------
+-- 40. Write a query to find the oldest student in the table.
+-- ----------------------------------------------------------
+
+SELECT 
+    CONCAT(first_name, ' ', last_name) AS full_name
+FROM
+    student_master
+WHERE
+    date_of_birth = (SELECT 
+            MIN(date_of_birth)
+        FROM
+            student_master);
