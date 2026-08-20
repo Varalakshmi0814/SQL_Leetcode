@@ -44,3 +44,12 @@ FROM
 WHERE
     RIGHT(last_name, 1) IN ('A' , 'E', 'I', 'O', 'U');
     
+-- ------------------------------------------------------------------------------
+-- 50. Write a query to calculate the number of days since each student enrolled.
+-- ------------------------------------------------------------------------------
+
+SELECT 
+    DATEDIFF(CURDATE(), enrollment_date) AS num_of_days
+FROM
+    student_master;
+    
