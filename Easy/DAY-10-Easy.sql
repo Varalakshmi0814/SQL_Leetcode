@@ -20,4 +20,17 @@ FROM
     student_master
 WHERE
     MONTH(date_of_birth) = MONTH(enrollment_date);
+
+-- ------------------------------------------------------------------------------------------------------
+-- 48. Write a query to list students, displaying "Yes" if they are active and "No" if they are inactive.
+-- ------------------------------------------------------------------------------------------------------
+
+SELECT 
+    CONCAT(first_name, ' ', last_name) AS full_name,
+    CASE
+        WHEN is_active = TRUE THEN 'Yes'
+        ELSE 'No'
+    END AS active_status
+FROM
+    student_master;
     
