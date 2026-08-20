@@ -33,4 +33,14 @@ SELECT
     END AS active_status
 FROM
     student_master;
+-- -------------------------------------------------------------------------------------
+-- 49. Write a query to find students whose last names end with a vowel (A, E, I, O, U).
+-- -------------------------------------------------------------------------------------
+
+SELECT 
+    CONCAT(first_name, ' ', last_name) AS Full_name
+FROM
+    student_master
+WHERE
+    RIGHT(last_name, 1) IN ('A' , 'E', 'I', 'O', 'U');
     
